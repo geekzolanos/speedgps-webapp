@@ -1,0 +1,15 @@
+{
+    "classPrefix": "modernizr-",
+    "options": [
+        "setClasses"
+    ],
+    "feature-detects": [
+        "audio",
+        "es6/array",
+        "network/fetch",
+        "geolocation",
+        "indexeddb",
+        "notification",
+        "es6/promises"
+    ]
+}

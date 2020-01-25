@@ -1,0 +1,135 @@
+[data-transition=current-far] {
+    animation: current-to-far .7s forwards;
+}
+
+[data-transition=far-current] {
+    animation: far-to-current .7s forwards;
+}
+
+@keyframes current-to-far {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(.7);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(.85);
+    }
+}
+
+@keyframes far-to-current {
+    0% {
+        transform: translate(-50%, -50%) scale(.85);
+    }
+    40% {
+        transform: translate(-50%, -50%) scale(.7);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+[data-transition=bottom-current] {
+    animation: bottom-to-current .5s forwards ease-in;
+}
+
+[data-transition=current-bottom] {
+    animation: current-to-bottom .5s forwards ease-in;
+}
+
+[data-transition=current-top] {
+    animation: current-to-top .5s forwards ease-in;
+}
+
+[data-transition=top-current] {
+    animation: top-to-current .5s forwards ease-in;
+}
+
+@keyframes bottom-to-current {
+    0% {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes current-to-bottom {
+    0% {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes current-to-top {
+    0% {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes top-to-current {
+    0% {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+[data-transition=current-left] {
+    animation: current-to-left .5s forwards;
+}
+
+[data-transition=right-current] {
+    animation: right-to-current .5s forwards;
+}
+
+[data-transition=left-current] {
+    animation: left-to-current .5s forwards;
+}
+
+[data-transition=current-right] {
+    animation: current-to-right .5s forwards;
+}
+
+@keyframes current-to-left {
+    0% {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes right-to-current {
+    0% {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes left-to-current {
+    0% {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes current-to-right {
+    0% {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}

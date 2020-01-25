@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+bower_components
+
+# Compiled output
+dist/
+.tmp/
+www/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# We don't require platform dependent code on project (For now)
+platforms/
+plugins/

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="theme-color" content="#000">
+
+    <link rel="icon" type="image/x-icon" href="res/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <title>SpeedGPS</title>
+
+    <!-- build:js scripts/modernizr.min.js -->
+    <script type="text/javascript" src="scripts/modernizr.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:css styles/vendor.min.css -->
+    <link rel="stylesheet" href="styles/vendor/normalize.css">
+    <link rel="stylesheet" href="styles/vendor/gaia/styles.css">
+    <link rel="stylesheet" href="styles/vendor/font-awesome.min.css">
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.min.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/lib.min.js -->
+    <script type="text/javascript" src="scripts/lib/compat.js"></script>
+    <script type="text/javascript" src="scripts/lib/utils.js"></script>
+    <script type="text/javascript" src="scripts/lib/am.js"></script>
+    <script type="text/javascript" src="scripts/lib/idbhelper.js"></script>
+    <!-- endbuild -->
+</head>
+
+<body>
+    <!-- build:js scripts/vendor.min.js -->
+    <script type="text/javascript" src="scripts/vendor/geopoint.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.min.js -->
+    <script type="text/javascript" src="scripts/core/globals.js"></script>
+    <script type="text/javascript" src="scripts/core/app.js"></script>
+    <script type="text/javascript" src="scripts/core/boot.js"></script>
+    <script type="text/javascript" src="scripts/core/data.js"></script>
+    <script type="text/javascript" src="scripts/core/notify.js"></script>
+    <script type="text/javascript" src="scripts/core/prefs.js"></script>
+    <script type="text/javascript" src="scripts/core/speed.js"></script>
+    <script type="text/javascript" src="scripts/core/units.js"></script>
+    <script type="text/javascript" src="scripts/core/wp.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1784 @@
+/* ----------------------------------
+ * Action menu
+ * ---------------------------------- */
+
+
+/* Main dialog setup */
+
+[role="dialog"][data-type="action"] {
+    background: #2d2d2d;
+    overflow: hidden;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 0 7rem;
+    /**
+   * Using "font-size: 0" to avoid the unwanted visual space (about 3px) created
+   * by white spaces and line breaks in the code between inline-block elements.
+   */
+    font-size: 0;
+    color: #fff;
+}
+
+[role="dialog"][data-type="action"]:before {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    width: 0.1rem;
+    height: 100%;
+    margin-left: -0.1rem;
+}
+
+[role="dialog"][data-type="action"]>header {
+    -moz-box-sizing: border-box;
+    font-size: 1.6rem;
+    background: url(action_menu/images/ui/alpha.png) repeat 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 5rem;
+    line-height: 4.9rem;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    font-weight: normal;
+    padding: 0 3rem;
+    border-bottom: 0.1rem solid #616262;
+}
+
+[role="dialog"][data-type="action"]>header h1 {
+    font-size: 1.6rem;
+    line-height: 4.9rem;
+    text-align: left;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    font-weight: normal;
+}
+
+
+/* Generic set of actions in toolbar */
+
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] {
+    height: 100%;
+    float: right;
+    margin: 0 -3rem 0 1rem;
+    padding: 0;
+}
+
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] a,
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] button {
+    -moz-box-sizing: border-box;
+    position: relative;
+    float: left;
+    width: auto;
+    min-width: 5rem;
+    height: 4.9rem;
+    margin-bottom: 0;
+    padding: 0 1rem;
+    border-radius: 0;
+    line-height: 4.9rem;
+    background: none;
+    text-align: center;
+    text-shadow: none;
+    z-index: 5;
+}
+
+[role="dialog"][data-type="action"]>header a,
+[role="dialog"][data-type="action"]>header button {
+    border: none;
+    padding: 0;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.1em;
+    color: #fff;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+[role="dialog"][data-type="action"] button::-moz-focus-inner {
+    outline: none;
+    border: none;
+}
+
+
+/* Pressed state */
+
+[role="dialog"][data-type="action"]>header a:active .icon:after,
+[role="dialog"][data-type="action"]>header button:active .icon:after,
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] a:active,
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] button:active {
+    background: #008aaa !important;
+}
+
+
+/* Disabled state */
+
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] a[aria-disabled="true"],
+[role="dialog"][data-type="action"]>header menu[type="toolbar"] button[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* Icon definitions */
+
+[role="dialog"][data-type="action"]>header .icon {
+    position: relative;
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+    width: 4rem;
+    height: 4.9rem;
+    margin: 0 -1rem;
+    background: transparent no-repeat center center / 3rem auto;
+    font-size: 0;
+    overflow: hidden;
+}
+
+
+/* Navigation links (back, cancel, etc) */
+
+[role="dialog"][data-type="action"]>header>button,
+[role="dialog"][data-type="action"]>header>a {
+    float: left;
+    width: 5rem;
+    height: 4.9rem;
+    background: none;
+    overflow: visible;
+    margin: 0 -1rem 0 -3rem;
+    position: relative;
+}
+
+[role="dialog"][data-type="action"]>header>button:after,
+[role="dialog"][data-type="action"]>header>a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3.2rem;
+    height: 4.9rem;
+    background: url(action_menu/images/ui/separator.png) no-repeat 3rem top / 0.1rem 4.8rem;
+}
+
+[role="dialog"][data-type="action"]>header>button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+[role="dialog"][data-type="action"]>header>button .icon,
+[role="dialog"][data-type="action"]>header>a .icon {
+    position: static;
+    display: block;
+    width: 3rem;
+    height: 4.9rem;
+    margin: 0;
+    overflow: visible;
+    font-size: 0;
+}
+
+[role="dialog"][data-type="action"]>header>button .icon:after,
+[role="dialog"][data-type="action"]>header>a .icon:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 3rem;
+    height: 4.9rem;
+}
+
+
+/* Content */
+
+[role="dialog"][data-type="action"]>section {
+    color: #fff;
+    position: absolute;
+    top: 7rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 2rem;
+    font-size: 1.6rem;
+    overflow: scroll;
+}
+
+
+/* Specific component code */
+
+[role="dialog"][data-type="action"]>menu {
+    margin: 0;
+    padding: 0;
+    max-height: calc(100% - 13.5rem);
+    /*header(5rem) + footer(7rem) + padding(1.5rem)*/
+    height: auto;
+    padding-top: 1.5rem;
+    overflow: auto;
+    width: auto;
+    border: none;
+    background: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 7rem;
+}
+
+[role="dialog"][data-type="action"]>menu>button {
+    width: calc(100% - 3rem);
+    height: 4rem;
+    -moz-box-sizing: border-box;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: normal;
+    line-height: 4rem;
+    outline: none;
+    font-size: 1.6rem;
+    text-shadow: none;
+    text-align: left;
+    padding: 0 1.2rem;
+    margin: 0 1.5rem 1rem 1.5rem;
+    background: rgba(87, 87, 87, 0.8);
+    border: none;
+    border-radius: 0;
+    position: relative;
+    color: #fff;
+    font-family: sans-serif;
+    font-style: italic;
+}
+
+[role="dialog"][data-type="action"]>menu>button:last-child {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: #333;
+    background: #d8d8d8;
+    text-align: center;
+    border: none;
+    margin-bottom: 1.5rem;
+    border-radius: 2rem;
+}
+
+[role="dialog"][data-type="action"]>menu>button:last-child:before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    background: #2D2D2D;
+    height: 7rem;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+[role="dialog"][data-type="action"]>menu>button:nth-last-child(2) {
+    margin-bottom: 1.5rem;
+}
+
+
+/* Press state */
+
+[role="dialog"][data-type="action"]>menu>button:active {
+    background: #00aacc;
+    color: #fff;
+}
+
+
+/* Disabled */
+
+[role="dialog"][data-type="action"]>menu>button[disabled] {
+    background-color: rgba(87, 87, 87, 0.8);
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+[role="dialog"][data-type="action"]>menu>button[disabled]:last-child {
+    background-color: #e7e7e7;
+    color: #a6a6a6;
+    opacity: 1;
+}
+
+
+/*
+	Drawer
+*/
+
+section[role="region"] [role="drawer"] {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #5F5F5F;
+    background-color: #F4F4F4;
+    transform: translateY(-100%);
+    transition: transform 300ms ease, visibility 300ms;
+    z-index: 7;
+    /* Justo por debajo de header */
+}
+
+section[role="region"].draweropen [role="drawer"] {
+    transform: translateY(4.5rem);
+    visibility: visible;
+}
+
+
+/*
+		Footer de drawer
+	*/
+
+[role="drawer"] [role="toolbar"] {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    box-sizing: border-box;
+    height: 45px;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+[role="drawer"] [role="toolbar"] button,
+[role="drawer"] [role="toolbar"] a {
+    position: relative;
+    flex: 1;
+    border: none;
+    background-color: #fff;
+    background-image: unset;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #919191;
+    border-radius: 0;
+    height: 100%;
+}
+
+[role="drawer"] [role="toolbar"] button:active,
+[role="drawer"] [role="toolbar"] a:active {
+    color: #fff;
+    background-color: #b2f2ff;
+}
+
+[role="drawer"] [role="toolbar"] button span.fa,
+[role="drawer"] [role="toolbar"] a span.fa {
+    vertical-align: -10%;
+}
+
+[role="drawer"] [role="toolbar"] button span.description,
+[role="drawer"] [role="toolbar"] a span.description {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+
+/*
+		Bloqueo de contenido en apertura de drawer
+	*/
+
+section[role="region"] #drawer-lock {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: opacity .5s ease, background-color .5s ease;
+    pointer-events: none;
+}
+
+section[role="region"].draweropen #drawer-lock {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 6;
+    /* Justo por debajo de drawer */
+    pointer-events: all;
+}
+
+
+/* Fuentes utilizadas en gaia */
+
+@font-face {
+    font-family: "Fira Sans";
+    src: local("Fira Sans"), url("fonts/FiraSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Fira Sans";
+    src: local("Fira Sans Italic"), url("fonts/FiraSans-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Fira Sans";
+    src: local("Fira Sans Light"), url("fonts/FiraSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Fira Sans";
+    src: local("Fira Sans Light Italic"), url("fonts/FiraSans-LightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+body {
+    font-family: Fira Sans;
+}
+
+
+/* -------------------------------------------------------------------
+  HEADERS: layout
+  Form factor or Skin dependent styles should NOT be defined here.
+------------------------------------------------------------------- */
+
+section[role="region"]>header:first-child {
+    position: relative;
+    display: block;
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.3);
+    height: 4.5rem;
+    border: none;
+    z-index: 8;
+}
+
+section[role="region"]>header:first-child h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-style: normal;
+    text-align: justify;
+    font-weight: 300;
+    line-height: 5rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 1rem;
+    height: 100%;
+    z-index: -1;
+}
+
+section[role="region"]>header:first-child menu {
+    height: 100%;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+section[role="region"]>header:first-child menu button {
+    padding: 5px;
+    transition: background 250ms ease;
+}
+
+section[role="region"]>header:first-child span {
+    color: #fff;
+    line-height: 4.5rem;
+    vertical-align: 0;
+}
+
+
+/* ----------------------------------
+  Buttons
+---------------------------------- */
+
+section[role="region"]>header:first-child a,
+section[role="region"]>header:first-child button {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    float: left;
+    width: 4.5rem;
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0 1rem;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 4.5rem;
+    border-radius: 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: none;
+    font-style: italic;
+}
+
+
+/* Pressed state */
+
+section[role="region"]>header:first-child a:focus {
+    outline: none;
+}
+
+
+/* Disabled state */
+
+section[role="region"]>header:first-child button[disabled] {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+
+/* ----------------------------------
+  Subheader
+---------------------------------- */
+
+section[role="region"]>header {
+    z-index: 0;
+    height: auto;
+}
+
+section[role="region"] header h2 {
+    margin: 0;
+    padding: 0.8rem 3rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+}
+
+
+/* -----------------------------------------------------------------
+  HEADER SKIN: default
+  Default values in case we are not overriding them using
+  class="skin-*"
+----------------------------------------------------------------- */
+
+section[role="region"]>header:first-child {
+    color: #fff;
+    background-color: #F7931E;
+}
+
+section[role="region"]>header:first-child h1 {
+    color: #fff;
+}
+
+section[role="region"]>header:first-child a,
+section[role="region"]>header:first-child button {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+section[role="region"]>header:first-child a:active,
+section[role="region"]>header:first-child button:active,
+section[role="region"]>header:first-child a:hover,
+section[role="region"]>header:first-child button:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+section[role="region"]>header:first-child a:focus,
+section[role="region"]>header:first-child button:focus {
+    background-color: transparent;
+}
+
+
+/* -----------------------------------------------------------------
+  HEADER SKIN: organic
+  .skin-organic will override default values
+----------------------------------------------------------------- */
+
+section[role="region"].skin-organic>header:first-child,
+.skin-organic section[role="region"]>header:first-child {
+    color: #868692;
+    background-color: #f4f4f4;
+}
+
+section[role="region"].skin-organic>header:first-child h1,
+.skin-organic section[role="region"]>header:first-child h1 {
+    color: #868692;
+}
+
+section[role="region"].skin-organic>header:first-child span:before {
+    color: #00aac5 !important;
+}
+
+section[role="region"].skin-organic header h2 {
+    background-color: #e7e7e7;
+    color: #4d4d4d;
+    border: none;
+}
+
+
+/* ----------------------------------
+* Input areas
+* ---------------------------------- */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="url"],
+input[type="number"],
+textarea {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    resize: none;
+    padding: 0 1.5rem;
+    font-size: 1.6rem;
+    border: 0.1rem solid #c7c7c7;
+    border-radius: 0;
+    box-shadow: none;
+    /* override the box-shadow from the system (performance issue) */
+    color: #333;
+    background: #fff;
+    margin: 0 0 1rem 0;
+}
+
+label:active {
+    background-color: transparent;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #a9a9a9;
+    opacity: 1;
+    font-style: italic;
+    font-weight: 400;
+}
+
+input[disabled] {
+    opacity: 0.5;
+}
+
+.skin-dark input[type="text"],
+.skin-dark input[type="password"],
+.skin-dark input[type="email"],
+.skin-dark input[type="tel"],
+.skin-dark input[type="search"],
+.skin-dark input[type="url"],
+.skin-dark input[type="number"],
+.skin-dark textarea {
+    color: #fff;
+    background-color: transparent;
+    border-color: #454545;
+}
+
+form p {
+    position: relative;
+    margin: 0;
+}
+
+form p input+button[type="reset"],
+form p textarea+button[type="reset"] {
+    position: absolute;
+    top: 0;
+    right: -0.3rem;
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: url(input_areas/images/clear.svg) no-repeat center / 3rem;
+}
+
+.skin-dark p input+button[type="reset"],
+.skin-dark p textarea+button[type="reset"] {
+    background-image: url(input_areas/images/clear_dark.svg);
+}
+
+
+/* To avoid colission with BB butons */
+
+li input+button[type="reset"]:after,
+li textarea+button[type="reset"]:after {
+    background: none;
+}
+
+textarea {
+    padding: 1.2rem;
+}
+
+form p input:focus {
+    padding-right: 3rem;
+}
+
+form p input:focus+button[type="reset"],
+form p textarea:focus+button[type="reset"] {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* Fieldset */
+
+fieldset {
+    position: relative;
+    overflow: hidden;
+    margin: 1.5rem 0 0 0 !important;
+    padding: 0 !important;
+    font-size: 2rem;
+    line-height: 1em;
+    background: none;
+    border: 0 !important;
+}
+
+fieldset legend,
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"] {
+    border: 0.1rem solid #c7c7c7;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    margin: 0 0 1.5rem;
+    padding: 0 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 4rem;
+    color: #333;
+    border-radius: 0;
+    background: #fff url(input_areas/images/dialog.svg) no-repeat calc(100% - 1rem) calc(100% - 1rem);
+}
+
+fieldset legend {
+    margin: 0 0 1rem;
+    padding: 1rem 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+fieldset[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.skin-dark fieldset legend,
+.skin-dark input[type="date"],
+.skin-dark input[type="time"],
+.skin-dark input[type="datetime"],
+.skin-dark input[type="datetime-local"] {
+    color: #fff;
+    background-color: transparent;
+    border-color: #454545;
+}
+
+fieldset[disabled] legend,
+input[type="date"][disabled],
+input[type="time"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled] {
+    background-image: url(input_areas/images/dialog_disabled.svg);
+    background-color: transparent
+}
+
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus {
+    box-shadow: none;
+    border-bottom-color: #c7c7c7;
+}
+
+.skin-dark input[type="date"]:focus,
+.skin-dark input[type="time"]:focus,
+.skin-dark input[type="datetime"]:focus,
+.skin-dark input[type="datetime-local"]:focus {
+    box-shadow: none;
+    border-bottom-color: #454545;
+}
+
+input[type="date"]:active,
+input[type="time"]:active,
+input[type="datetime"]:active,
+input[type="datetime-local"]:active {
+    background-color: #b2f2ff;
+    color: #fff;
+}
+
+.skin-dark input[type="date"]:active,
+.skin-dark input[type="time"]:active,
+.skin-dark input[type="datetime"]:active,
+.skin-dark input[type="datetime-local"]:active {
+    background-color: #00aacc;
+    background-image: url(input_areas/images/dialog_active.svg);
+}
+
+
+/* fix for required inputs with wrong or empty value e.g. [type=email] */
+
+input:invalid,
+textarea:invalid,
+.skin-dark input:invalid,
+.skin-dark textarea:invalid {
+    color: #b90000;
+}
+
+input:focus,
+textarea:focus,
+.skin-dark input:focus,
+.skin-dark textarea:focus {
+    box-shadow: inset 0 -0.1rem 0 #00caf2;
+    border-bottom-color: #00caf2;
+}
+
+input:invalid:focus,
+textarea:invalid:focus,
+.skin-dark input:invalid:focus,
+.skin-dark textarea:invalid:focus {
+    box-shadow: inset 0 -0.1rem 0 #820000;
+    border-bottom-color: #820000;
+}
+
+
+/* Tidy (search/submit) */
+
+form[role="search"] {
+    position: relative;
+    height: 3.7rem;
+    background: #f4f4f4;
+}
+
+form[role="search"].skin-dark {
+    background: #202020;
+}
+
+form[role="search"] p {
+    padding: 0 1.5rem 0 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+form[role="search"] p input,
+form[role="search"] p textarea {
+    height: 3.7rem;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+form[role="search"] p textarea {
+    padding: 1rem 0 0 0;
+}
+
+form[role="search"] p input::-moz-placeholder {
+    background: url(input_areas/images/search.svg) right -0.5rem center no-repeat;
+    background-size: 3rem;
+}
+
+form[role="search"].skin-dark p input::-moz-placeholder {
+    background-image: url(input_areas/images/search_dark.svg);
+}
+
+form[role="search"] p input:focus::-moz-placeholder {
+    background: none;
+}
+
+form[role="search"] p input:invalid,
+form[role="search"] p textarea:invalid,
+form[role="search"] p input:focus,
+form[role="search"] p textarea:focus {
+    border: none;
+    box-shadow: none;
+}
+
+form[role="search"].skin-dark p input,
+form[role="search"].skin-dark p textarea {
+    color: #fff;
+    background: none;
+    box-shadow: none;
+}
+
+form[role="search"] button[type="submit"] {
+    float: right;
+    min-width: 6rem;
+    height: 3.7rem;
+    padding: 0 1.5rem;
+    border: none;
+    color: #00aac5;
+    font-weight: normal;
+    font-size: 1.6rem;
+    line-height: 3.7rem;
+    width: auto;
+    border-radius: 0;
+    margin: 0;
+    position: relative;
+    background-color: unset;
+    font-style: italic;
+    overflow: visible;
+}
+
+form[role="search"] button[type="submit"]:after {
+    content: "";
+    position: absolute;
+    left: -0.1rem;
+    top: 0.7rem;
+    bottom: 0.7rem;
+    width: 0.1rem;
+    background: #c7c7c7;
+}
+
+form[role="search"] button[type="submit"].icon {
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 3rem;
+}
+
+form[role="search"] p input+button[type="reset"] {
+    height: 3.7rem;
+    right: 0.5rem;
+}
+
+form[role="search"].skin-dark button[type="submit"]:after {
+    background-color: #575757;
+}
+
+form[role="search"] button[type="submit"]+p>textarea {
+    height: 3.7rem;
+    line-height: 2rem;
+}
+
+form[role="search"] button[type="submit"]+p button {
+    height: 3.7rem;
+}
+
+form[role="search"].full button[type="submit"] {
+    display: none;
+}
+
+form[role="search"] button.icon:active,
+form[role="search"] button[type="submit"]:active {
+    background-color: #b2f2ff;
+    color: #fff;
+}
+
+form[role="search"].skin-dark button.icon:active,
+form[role="search"].skin-dark button[type="submit"]:active {
+    background: #00aacc;
+}
+
+form[role="search"] button[type="submit"][disabled] {
+    color: #adadad;
+    pointer-events: none;
+}
+
+form button::-moz-focus-inner {
+    border: none;
+    outline: none;
+}
+
+
+/* .bb-editable - e.g email & SMS recipients */
+
+.bb-editable [contenteditable] {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    max-width: calc(100% - 1.4rem);
+    overflow: hidden;
+    padding: 0 1.5rem;
+    margin: 0 0 0.6rem 0;
+    line-height: 2.8rem;
+    border-radius: 1.4rem;
+    text-overflow: ellipsis;
+    font-size: 1.6rem;
+    font-style: italic;
+    white-space: nowrap;
+    color: #333;
+    background: #fff;
+}
+
+.bb-editable [contenteditable].icon {
+    padding-right: 3.7rem;
+}
+
+.bb-editable [contenteditable="false"].invalid {
+    background-color: #fedcdc;
+    padding-left: 3.3rem;
+}
+
+.bb-editable [contenteditable="false"].invalid:before {
+    content: "!";
+    position: absolute;
+    top: 0.6rem;
+    left: 0.8rem;
+    display: block;
+    width: 1.7rem;
+    height: 1.6rem;
+    padding: 0;
+    border-radius: 50%;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    text-align: center;
+    text-indent: -0.1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: #fff;
+    background-color: #b80404;
+}
+
+.bb-editable [contenteditable="false"].invalid:hover:before,
+.bb-editable [contenteditable="false"].invalid:active:before {
+    color: #b2f2ff;
+    background-color: #fff;
+}
+
+.bb-editable [contenteditable]:hover,
+.bb-editable [contenteditable]:active,
+.bb-editable [contenteditable].invalid:hover,
+.bb-editable [contenteditable].invalid:active {
+    color: #fff;
+    background-color: #b2f2ff;
+}
+
+.bb-editable [contenteditable].icon:after {
+    content: "";
+    position: absolute;
+    top: 0.7rem;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    background-position: -0.7rem -3.8rem;
+    background-repeat: no-repeat;
+    background-size: 3rem;
+}
+
+.bb-editable [contenteditable].icon:hover:after,
+.bb-editable [contenteditable].icon:active:after {
+    background-position: -0.7rem -0.8rem;
+}
+
+.bb-editable [contenteditable].invalid.icon:after {
+    background-position: -0.7rem -6.8rem;
+}
+
+.bb-editable [contenteditable].invalid.icon:hover:after,
+.bb-editable [contenteditable].invalid.icon:active:after {
+    background-position: -0.7rem -0.8rem;
+}
+
+.bb-editable [contenteditable="true"],
+.bb-editable [contenteditable="true"]:hover,
+.skin-comms .bb-editable [contenteditable="true"]:hover {
+    padding: 0 0.2rem;
+    white-space: normal;
+    font-size: 1.8rem;
+    font-style: normal;
+    color: #000;
+    background: none repeat scroll 0 0 transparent;
+}
+
+
+/* ----------------------------------
+ * Lists
+ * ---------------------------------- */
+
+[data-type="list"] {
+    font-weight: 400;
+    padding: 0 1.5rem;
+}
+
+[data-type="list"] ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+[data-type="list"] strong {
+    font-weight: 500;
+}
+
+
+/* Title divisors */
+
+[data-type="list"] header {
+    padding: 0 1.5rem;
+    margin: 0;
+    font-size: 1.6rem;
+    height: 3rem;
+    line-height: 4rem;
+    font-weight: normal;
+    color: #ff4e00;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* List items */
+
+[data-type="list"] li {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    border-bottom: solid 0.1rem #e7e7e7;
+    color: #333;
+    margin: 0;
+    display: block;
+    position: relative;
+}
+
+[data-type="list"] li:last-child {
+    border: none;
+}
+
+
+/* Pressed State */
+
+li a:active {
+    background-color: transparent;
+    /* remove default color for active state */
+}
+
+[data-type="list"] li>a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    position: relative;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+[data-type="list"].active li:after,
+[data-type="list"] li>a:after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    right: -1.5rem;
+    bottom: 0;
+}
+
+[data-type="list"].active li:active:after,
+[data-type="list"] li>a:active:after {
+    background-color: rgba(0, 213, 255, 0.3);
+}
+
+
+/* Disabled */
+
+[data-type="list"] li[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.2;
+    border-color: #888;
+}
+
+
+/* Graphic content */
+
+[data-type="list"] aside {
+    float: left;
+    margin: 0 0.5rem 0 0;
+    height: 100%;
+    position: relative;
+}
+
+[data-type="list"] li>a aside,
+[data-type="list"] li>a aside.icon {
+    background-color: transparent;
+}
+
+[data-type="list"] aside.pack-end {
+    float: right;
+    margin: 0 0 0 0.5rem;
+    text-align: right;
+}
+
+[data-type="list"] aside.icon {
+    width: 3rem;
+    height: 6rem;
+    background: #fff no-repeat left center / 100% auto;
+    font-size: 0;
+    display: block;
+    overflow: hidden;
+}
+
+[data-type="list"] aside span[data-type=img],
+[data-type="list"] aside img {
+    display: block;
+    overflow: hidden;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 0.1rem #dedede;
+    background: transparent center center / cover;
+    position: relative;
+    /* Favor performance over quality */
+    image-rendering: -moz-crisp-edges;
+}
+
+
+/* Text content */
+
+[data-type="list"] li p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: none;
+    display: block;
+    margin: 0;
+    color: #858585;
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+[data-type="list"] li p:first-of-type {
+    line-height: 2.2rem;
+    color: #333;
+}
+
+[data-type="list"] li p:first-of-type:last-of-type {
+    line-height: 6rem;
+}
+
+[data-type="list"] li p em {
+    font-size: 1.5rem;
+    font-style: normal;
+}
+
+[data-type="list"] li p time {
+    margin-right: 0.3rem;
+    text-transform: uppercase;
+}
+
+
+/* Checkable content */
+
+[data-type="list"] li>.pack-checkbox,
+[data-type="list"] li>.pack-radio,
+[data-type="list"] li>.pack-switch {
+    pointer-events: none;
+    position: absolute;
+    top: -0.1rem;
+    bottom: 0;
+    right: 0;
+    left: -4rem;
+    width: auto;
+    height: auto;
+}
+
+[data-type="list"] li>.pack-checkbox input~span:after,
+[data-type="list"] li>.pack-radio input~span:after,
+[data-type="list"] li>.pack-switch input~span:after {
+    left: 0;
+    margin-left: 0;
+}
+
+
+/* Edit mode */
+
+[data-type="list"] [data-type="edit"] li {
+    padding-left: 4rem;
+}
+
+[data-type="list"] [data-type="edit"] li>.pack-checkbox,
+[data-type="list"] [data-type="edit"] li>.pack-radio,
+[data-type="list"] [data-type="edit"] li>.pack-switch {
+    pointer-events: auto;
+    left: 0;
+}
+
+[data-type="list"] [data-type="edit"] li>a {
+    pointer-events: none;
+}
+
+[data-type="list"] [data-type="edit"] li>a:active:after,
+[data-type="list"] [data-type="edit"] li>a:hover:after {
+    display: none;
+}
+
+[data-type="list"] [data-type="edit"] aside.pack-end {
+    display: none;
+}
+
+
+/* ----------------------------------
+* Seekbars
+* ---------------------------------- */
+
+[role="slider"],
+input[type="range"] {
+    position: relative;
+    height: 3.5rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 0;
+    border: none;
+}
+
+[role="slider"]>div {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    height: 100%;
+}
+
+[role="slider"]>label {
+    font-size: 1.5rem;
+    line-height: 3.8rem;
+    font-family: sans-serif;
+    color: #00aacb;
+    float: right;
+    padding: 0 0 0 1rem;
+    height: 3.5rem;
+    width: auto;
+}
+
+[role="slider"] label:first-of-type {
+    float: left;
+    padding: 0 1rem 0 0;
+}
+
+[role="slider"]>label.icon {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0.5rem;
+    font-size: 0;
+    background: no-repeat right top / 3rem auto;
+}
+
+[role="slider"]>label.icon:first-of-type {
+    background-position: top left;
+}
+
+
+/*
+  Clean Step
+*/
+
+input[type="range"] {
+    -webkit-appearance: none;
+    /* Hides the slider so that custom slider can be made */
+    width: 100%;
+    /* Specific width is required for Firefox. */
+    background: transparent;
+    /* Otherwise white in Chrome */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+    outline: none;
+    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type="range"]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    /* Hides the slider so custom styles can be added */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+
+/*
+  Thumb Step
+*/
+
+input[type="range"]::-webkit-slider-thumb {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: url(seekbars/images/ui/handler.png) no-repeat center center / 2.8rem auto;
+    border-radius: 3.2rem;
+    border: solid 0.1rem transparent;
+    transition: border 0.15s ease;
+    margin-top: -1rem;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+    border: solid 0.5rem #01c5ed;
+}
+
+
+/* All the same stuff for Firefox */
+
+input[type="range"]::-moz-range-thumb {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: url(seekbars/images/ui/handler.png) no-repeat center center / 2.8rem auto;
+    border-radius: 3.2rem;
+    border: solid 0.1rem transparent;
+    transition: border 0.15s ease;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+    border: solid 0.5rem #01c5ed;
+}
+
+
+/* All the same stuff for IE */
+
+input[type="range"]::-ms-thumb {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: url(seekbars/images/ui/handler.png) no-repeat center center / 2.8rem auto;
+    border-radius: 3.2rem;
+    border: solid 0.1rem transparent;
+    transition: border 0.15s ease;
+}
+
+input[type="range"]:active::-ms-thumb {
+    border: solid 0.5rem #01c5ed;
+}
+
+
+/*
+  Track Step
+*/
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    background: #000;
+    border: none;
+    height: 0.1rem;
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    background: #000;
+    border: none;
+    height: 0.1rem;
+}
+
+input[type="range"]::-ms-track {
+    width: 100%;
+    background: #000;
+    border: none;
+    height: 0.1rem;
+}
+
+
+/*
+  Progress Step
+*/
+
+input[type="range"]::-ms-fill-lower {
+    background: #01c5ed;
+    height: 0.6rem;
+}
+
+input[type="range"]::-moz-range-progress {
+    background: #01c5ed;
+    height: 0.6rem;
+}
+
+input[type="range"]::-webkit-progress-value {
+    background: #01c5ed;
+    height: 0.6rem;
+}
+
+
+/*-------------------------
+ 	Estilos de Gaia
+-------------------------*/
+
+@import url('action_menu.css');
+@import url('drawer.css');
+@import url('fonts.css');
+@import url('headers.css');
+@import url('input_areas.css');
+@import url('lists.css');
+@import url('seekbars.css');
+@import url('switches.css');
+@import url('util.css');
+
+/* ----------------------------------
+ * CHECKBOXES / RADIOS
+ * ---------------------------------- */
+
+label.pack-checkbox,
+label.pack-radio,
+label.pack-switch {
+    display: inline-block;
+    vertical-align: middle;
+    width: 6rem;
+    height: 6rem;
+    position: relative;
+    background: none;
+}
+
+label.pack-checkbox input,
+label.pack-radio input,
+label.pack-switch input {
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+label.pack-checkbox input~span:after,
+label.pack-radio input~span:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -1.1rem 0 0 -1.1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    pointer-events: none;
+}
+
+label.pack-checkbox input~span:after {
+    background: url(switches/images/check/default.png) no-repeat center top / 2.2rem auto;
+}
+
+label.pack-radio input~span:after {
+    background: url(switches/images/radio/default.png) no-repeat center top / 2.2rem auto;
+}
+
+label.pack-checkbox input:checked~span:after,
+label.pack-radio input:checked~span:after,
+label.pack-switch input:checked~span:after {
+    background-position: center bottom;
+}
+
+
+/* 'Dangerous' switches */
+
+label.pack-checkbox.danger input~span:after {
+    background-image: url(switches/images/check/danger.png);
+}
+
+label.pack-radio.danger input~span:after {
+    background-image: url(switches/images/radio/danger.png);
+}
+
+
+/* ----------------------------------
+ * ON/OFF SWITCHES
+ * ---------------------------------- */
+
+label.pack-switch input~span:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 6rem;
+    margin: -1.4rem 0 0;
+    height: 2.7rem;
+    pointer-events: none;
+    border-radius: 1.35rem;
+    overflow: hidden;
+    background: #e6e6e6 url(switches/images/switch/background_off.png) no-repeat -3.2rem 0 / 9.2rem 2.7rem;
+    transition: background 0.2s ease;
+}
+
+
+/* switch: 'ON' state */
+
+label.pack-switch input:checked~span:after {
+    background: #e6e6e6 url(switches/images/switch/background.png) no-repeat 0 0 / 9.2rem 2.7rem;
+}
+
+
+/* switch: disabled state */
+
+label.pack-switch input:disabled~span:after {
+    opacity: 0.4;
+}
+
+label.pack-switch input.uninit~span:after {
+    transition: none;
+}
+
+
+/******************************************************************************
+ * Right-To-Left tweaks
+ */
+
+html[dir="rtl"] label.pack-checkbox input,
+html[dir="rtl"] label.pack-radio input,
+html[dir="rtl"] label.pack-switch input {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] label.pack-checkbox input~span:after,
+html[dir="rtl"] label.pack-radio input~span:after {
+    left: auto;
+    right: 50%;
+    margin-left: auto;
+    margin-right: -1.1rem;
+}
+
+html[dir="rtl"] label.pack-switch input~span:after {
+    left: 0;
+    right: auto;
+}
+
+html[dir="rtl"] label.pack-switch input~span:after {
+    background-position: 0;
+}
+
+
+/* switch: 'ON' state */
+
+html[dir="rtl"] label.pack-switch input:checked~span:after {
+    background-image: url(switches/images/switch/background_rtl.png);
+    background-position: -3.2rem 0;
+}
+
+
+/* Feel free to add any useful code */
+
+
+/* This will help you scroll just the content of your app. Eg:
+  <header class="fixed">
+  ...
+  <article class="scrollable header">
+*/
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    font-size: 62.5%;
+    /* Setting base font to 10px and define all your units in rem. 1rem = 10px */
+}
+
+body {
+    transition: background .5s ease;
+}
+
+[role="region"] {
+    height: 100%;
+}
+
+.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.none {
+    display: none !important;
+}
+
+.scrollable {
+    overflow: scroll;
+    height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative;
+}
+
+.scrollable.header {
+    height: calc(100% - 5rem);
+    top: 5rem;
+}
+
+.center {
+    text-align: center;
+}
+
+.absolute-center {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+/* Fonts */
+
+h1,
+h2,
+p {
+    margin: 0px !important;
+}
+
+h1 {
+    /* Main header */
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+h2 {
+    /* Subheader, Dialog title */
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+p.large {
+    /* Dialog body */
+    font-size: 2.4rem;
+}
+
+p.medium {
+    /* Body medium, Buttons */
+    font-size: 1.6rem;
+}
+
+p.small {
+    /* Status bar */
+    font-size: 1.5rem;
+}
+
+p.mini {
+    /* Fine print */
+    font-size: 1.4rem;
+}
+
+p.v-mini {
+    /* Fine print */
+    font-size: 1.3rem;
+}
+
+p.micro {
+    /* Copyright */
+    font-size: 0.92rem;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.9rem;
+    font-weight: normal;
+    line-height: 2rem;
+}

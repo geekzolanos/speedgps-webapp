@@ -1,0 +1,10 @@
+@import 'animations';
+@import 'am';
+body {
+    background-color: #000;
+    touch-action: none;
+}
+
+.slot[data-id=gauge] {
+    overflow: unset !important;
+}
